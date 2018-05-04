@@ -3,23 +3,19 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    mode: process.env.NODE_ENV,
     devtool: 'inline-source-map',
-    entry: ['./app/client/index.js'],
+    entry: ['babel-polyfill','./app/client/index.js'],
     output: {
         path: path.join(__dirname, 'build'),
         filename: 'bundle.js'
     },
     module: {
-        loaders: [
-            {
-                test: /.js$/,
-                loader: 'babel-loader',
-                include: path.join(__dirname, 'app'),
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015', 'react']
-                }
-            }
-        ]
+        rules: [{
+            test: /\.js$/,
+            include: path.join(__dirname, 'app/client'),
+            exclude: /node_modules/,
+            use: [{loader: 'babel-loader'}]
+        }]
     }
 };
