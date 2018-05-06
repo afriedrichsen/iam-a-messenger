@@ -6,21 +6,67 @@ import {
     Switch
 } from 'react-router-dom';
 
-//import List from './List'
-import Home from './Home'
-import Manage from './Manage'
+
+
+import {
+    Container,
+    Row,
+    Col,
+} from 'reactstrap';
+
+import Header from './Header';
+import GuestMenu from './GuestMenu';
 
 export default function App(props) {
 
 //    const { pokemon } = props;
 
-    return (
-        <div>
-            Your SSR React Router Node App initialised with data!
-            <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/manage" exact component={Manage}/>
-            </Switch>
+    return (<div>
+            <Header></Header>
+            <Router>
+                <Route></Route>
+            </Router>
+            <Container>
+                <Row>
+                    <Col sm={{ size: 'auto', offset: 1 }}>
+
+                    </Col>
+                    <Col sm={{ size: 'auto', offset: 1 }}>
+                    Select User to Notify:
+                    </Col>
+                    <Col sm={{ size: 'auto', offset: 1 }}>
+                        <GuestMenu></GuestMenu>
+
+                    </Col>
+                </Row>
+                <Row>
+                    <Col sm={{ size: 'auto', offset: 1 }}>
+
+                    </Col>
+                    <Col sm={{ size: 'auto', offset: 1 }}>
+
+                        Select User's Hotel:
+                    </Col>
+                    <Col sm={{ size: 'auto', offset: 1 }}>
+                        <GuestMenu></GuestMenu>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col sm={{ size: 'auto', offset: 1 }}>
+
+                    </Col>
+                    <Col sm={{ size: 'auto', offset: 1 }}>
+                    Select Message:
+                    </Col>
+                    <Col sm={{ size: 'auto', offset: 1 }}>
+                        <GuestMenu></GuestMenu>
+                    </Col>
+                </Row>
+                <Row>
+
+                </Row>
+            </Container>
         </div>
+
     )
 };

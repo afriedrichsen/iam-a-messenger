@@ -9,7 +9,7 @@ const publicUrl = '/public';
 const env = getClientEnvironment(publicUrl);
 
 module.exports = {
- //   mode: 'development',
+    mode: 'development',
     devtool: 'inline-source-map',
     entry: { main: './app/client/index.js' },
     output: {
@@ -24,20 +24,20 @@ module.exports = {
             use: [{loader: 'babel-loader'}]
         },
         {
-            test: /\.s?css$/,
-            include: path.join(__dirname, 'app/client/public'),
-            use: ExtractTextPlugin.extract(
-                {
-                    fallback: 'style-loader',
-                    use: ['css-loader']
-                })
-            },
-            {
-                test: /\.(jpg|jpeg|gif|png|ico)$/,
-                include: path.join(__dirname, 'app'),
-                exclude: /node_modules/,
-                use:[{loader:'file-loader', options: {name: 'build/public/[path][name].[ext]'}}]
-            },
+            test:/\.css$/,
+         //   exclude: /node_modules/,
+            use: [{loader: 'style-loader'},{loader:'css-loader'}]
+        },
+           // {
+           //     test: /\.(jpg|jpeg|gif|png|ico)$/,
+           //     include: path.join(__dirname, 'app'),
+           //     exclude: /node_modules/,
+          //      use:[{loader:'file-loader', options: {name: 'build/public/[path][name].[ext]'}}]
+         //   }
+         //   {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, use: [{loader:'file-loader'}]},
+         //   {test: /\.(woff|woff2)$/, use: [{loader: 'url-loader?prefix=font/&limit=5000'}]},
+         //   {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, use: [{loader: 'url-loader?limit=10000&mimetype=application/octet-stream'}]},
+         //   {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use: [{loader: 'url-loader?limit=10000&mimetype=image/svg+xml'}]}
         ]
     },
     plugins: [
@@ -54,6 +54,9 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'build'),
         compress: true,
-        port: 9000
+        port: 9000,
+    //    hot: true
     }
 };
+
+

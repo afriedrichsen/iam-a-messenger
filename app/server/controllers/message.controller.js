@@ -12,9 +12,15 @@ const { handler: errorHandler } = require('../middlewares/error');
 
 exports.sendMessage = async (req, res, next) => {
 
+    try {
+
+    } catch(error) {
+        next(error);
+    }
+
 };
 
 
-exports.createMessageTemplate = async (req, res, next) => {
+exports.createMessageTemplateFromRequest = async (req, res, next) => {
 
 };

@@ -2,7 +2,7 @@ const express = require('express');
 
 // Here are our route files.
 const manageRoutes = require('./manage.route');
-const messageRoutes = require('./message.route.js');
+const messageRoutes = require('./message.route');
 
 const router = express.Router();
 

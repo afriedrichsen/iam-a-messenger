@@ -11,6 +11,6 @@ router
 
 router
     .route('/message/template')
-    .post(controller.createMessageTemplate);
+    .post(controller.createMessageTemplateFromRequest);
 
 module.exports = router;
