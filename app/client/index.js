@@ -1,15 +1,24 @@
+import 'babel-polyfill';
 import React from 'react';
-import { render } from 'react-dom';
-//import {BrowserRouter as Router } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
-import App from './components/App';
+import { Router, browserHistory } from 'react-router';
 
-//import App from './containers/App';
 
-//Loading some css specifically for reactstrap.
+// CSS imports (needed for Reactstrap).
 import 'bootstrap/dist/css/bootstrap.css';
+import 'react-select/dist/react-select.css';
 
-render(
-    <App />,
-    document.getElementById('root')
-);
+//Here comes our Redux.
+import registerServiceWorker from './registerServiceWorker';
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
+
+//Here are our routes for React Router.
+import routes from './routes';
+
+// Let there be Redux!
+const store = configureStore()
+
+ReactDOM.render(<Provider store={store}><Router history={browserHistory} routes={routes} /></Provider>,document.getElementById('root'));
+registerServiceWorker();

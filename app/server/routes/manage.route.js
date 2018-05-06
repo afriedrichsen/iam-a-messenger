@@ -84,19 +84,19 @@ router
 router
     .route('/messages')
     /**
-     * @api {get} messenger/manage/guests List Message Templates
+     * @api {get} messenger/manage/guests List Message.js Templates
      * @apiDescription Get a list of message/notification templates.
      * @apiVersion 1.0.0
      * @apiName getAllMessageTemplates
-     * @apiGroup Message
+     * @apiGroup Message.js
      *
      *
      *
      *
      * @apiParam  {Number{1-}}         [page=1]         List page
-     * @apiParam  {Number{1-100}}      [perPage=1]      Message templates per page
-     * @apiParam  {String}             [messageType]      Message template type
-     * @apiParam  {String}             [messangeBody]       Message template body
+     * @apiParam  {Number{1-100}}      [perPage=1]      Message.js templates per page
+     * @apiParam  {String}             [messageType]      Message.js template type
+     * @apiParam  {String}             [messangeBody]       Message.js template body
      *
      *
      *
@@ -111,19 +111,19 @@ router
      * @apiDescription Create a new message template
      * @apiVersion 1.0.0
      * @apiName createMessageTemplate
-     * @apiGroup Message
+     * @apiGroup Message.js
      *
      *
      *
      *
-     * @apiParam  {String}             messageType       Message template type
-     * @apiParam  {String}             messageBody       Message template body.
+     * @apiParam  {String}             messageType       Message.js template type
+     * @apiParam  {String}             messageBody       Message.js template body.
      *
      *
      *
-     * @apiSuccess (Created 201) {String}  id              Message template's id
-     * @apiSuccess (Created 201) {String}  messageType     Message template's last name
-     * @apiSuccess (Created 201) {Object}  messageBody     Message template's reservation
+     * @apiSuccess (Created 201) {String}  id              Message.js template's id
+     * @apiSuccess (Created 201) {String}  messageType     Message.js template's last name
+     * @apiSuccess (Created 201) {Object}  messageBody     Message.js template's reservation
      * @apiSuccess (Created 201) {Date}    createdAt       Timestamp
      *
      *

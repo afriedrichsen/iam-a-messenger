@@ -6,7 +6,7 @@ const moment = require('moment-timezone');
 const APIError = require('../utils/APIError');
 
 /**
- * Message (Notfication) Schema
+ * Message.js (Notfication) Schema
  * @private
  */
 
@@ -46,7 +46,7 @@ messageSchema.statics = {
             }
 
             throw new APIError({
-                message: 'Message template does not exist',
+                message: 'Message.js template does not exist',
                 status: httpStatus.NOT_FOUND,
             });
         } catch (error) {
