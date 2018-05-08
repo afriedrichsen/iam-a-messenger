@@ -18,11 +18,12 @@ exports.sendMessage = async (req, res, next) => {
     Guest.findById(req.body.userId).then((noguest, guest) => {
         if (noguest) {
             //  return noguest;
-            var result = noguest.firstName;
+            var targetGuest = noguest.firstName;
+            var targetGuestRoom = 'Room ' + noguest.reservation.roomNumber;
 
         }
         else {
-            //  console.log(guest);
+
         }
         //console.log(result);
 
@@ -46,9 +47,9 @@ exports.sendMessage = async (req, res, next) => {
                 else {
 
                 }
-                messageResult = messageResult.replace('#TARGET_GREETING',targetGreeting).replace('#TARGET_GUEST', result).replace('#TARGET_RESERVATION_LOCATION',targetCompany).replace('#TARGET_LOCATION', targetCompany);
-                console.log(messageResult);
-                res.json({succcess: true, message:'Message output provided.', messageResult});
+                messageResult = messageResult.replace('#TARGET_GREETING',targetGreeting).replace('#TARGET_GUEST', targetGuest).replace('#TARGET_RESERVATION_LOCATION',targetGuestRoom).replace('#TARGET_LOCATION', targetCompany);
+                //console.log(messageResult);
+                res.json({success: true, message:'Message output provided.', messageResult});
             });
         });
     });
