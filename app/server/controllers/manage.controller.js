@@ -21,17 +21,35 @@ const { handler: errorHandler } = require('../middlewares/error');
 
 exports.getAllGuests = async (req, res, next) => {
     try {
-      Guest.find({}, (err, guest) => {
+      Guest.find({}, (err, guests) => {
           if (err){
               res.send(err)
           }
-          res.json(guest)
+          //console.log(guest);
+          res.json({'success':true, 'message':'Fetched guests successfully.', guests})
       })
     } catch(error){
         next(error);
     }
 
 };
+
+
+
+exports.getGuestById = async (req, res, next) => {
+    try {
+        Guest.findById(req.params.id, (err, guest) => {
+            if (err) {
+                res.send(err);
+            }
+            res.json({'success':true, 'message':'Fetched guest successfully.', guest});
+        })
+
+    } catch(error) {
+        next(error)
+    }
+}
+
 
 /**
  * Create new guest
@@ -62,7 +80,7 @@ exports.uploadGuests = async (req, res, next) => {
             const savedGuest = await guest.save();
         }
         res.status(httpStatus.CREATED);
-        res.json(data);
+        res.json({success:true, message:'Successfully created batch of users.', guests: data});
     } catch(error) {
         next(error);
     }
@@ -74,12 +92,17 @@ exports.uploadGuests = async (req, res, next) => {
  * @public
  * */
 exports.updateGuest = (req, res, next) => {
-    const updatedUser = req.body;
-    const user = Object.assign(req.locals.guest, updatedUser);
+    try {
+        Guest.findOneAndUpdate({_id:req.params.id}, req.body, function (err, guest) {
+            if(err){
+                res.json({success:false, message:'Error received!', err})
+            }
+            res.json({success:true, message:'Successfully updated user', guest});
+        });
 
-    user.save()
-        .then(savedGuest => res.json(savedGuest))
-        .catch(e => next(e));
+    } catch (error) {
+        next(error);
+    }
 };
 
 /**
@@ -87,11 +110,14 @@ exports.updateGuest = (req, res, next) => {
  * @public
  */
 exports.removeGuest = (req, res, next) => {
-    const { guest } = req.locals;
-
-    guest.remove()
-        .then(() => res.status(httpStatus.NO_CONTENT).end())
-        .catch(e => next(e));
+    Guest.remove({
+        _id: req.params.id
+    }).then((err, guest) => {
+        if(err) {
+            res.send(err)
+        }
+       // res.json({message: 'Guest successfully deleted.'})
+    })
 };
 
 /**
@@ -104,6 +130,18 @@ exports.removeGuest = (req, res, next) => {
 
 
 exports.getAllHotels = async (req, res, next) => {
+
+    try {
+        Hotel.find({}, (err, companies) => {
+            if (err){
+                res.send(err)
+            }
+            //console.log(guest);
+            res.json({'success':true, 'message':'Fetched companies successfully.', companies})
+        })
+    } catch(error){
+        next(error);
+    }
 
 };
 
@@ -144,6 +182,24 @@ exports.uploadHotels = async (req, res, next) => {
 
 
 /**
+ * Find hotel/company by ID.
+ */
+exports.getHotelById = async (req, res, next) => {
+    try {
+        Hotel.findById(req.params.id, (err, company) => {
+            if (err) {
+                res.send(err);
+            }
+            res.json({'success':true, 'message':'Fetched company successfully.', company});
+        })
+
+    } catch(error) {
+        next(error)
+    }
+}
+
+
+/**
  * Update existing hotel/location
  * @public
  * */
@@ -179,7 +235,42 @@ exports.removeHotel = (req, res, next) => {
 
 exports.getAllMessageTemplates = async (req, res, next) => {
 
+    try {
+        Message.find({}, (err, templates) => {
+            if (err){
+                res.send(err)
+            }
+            //console.log(guest);
+            res.json({'success':true, 'message':'Fetched message templates successfully.', templates})
+        })
+    } catch(error){
+        next(error);
+    }
+
 };
+
+/**
+ * Returns template from ID.
+ * @param req
+ * @param res
+ * @param next
+ * @returns {Promise<void>}
+ */
+
+exports.getTemplateById = async (req, res, next) => {
+    try {
+        Message.findById(req.params.id, (err, template) => {
+            if (err) {
+                res.send(err);
+            }
+            res.json({'success':true, 'message':'Fetched template successfully.', template});
+        })
+
+    } catch(error) {
+        next(error)
+    }
+}
+
 
 /**
  * Create new message/notification template

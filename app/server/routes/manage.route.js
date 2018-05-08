@@ -56,33 +56,34 @@ router
      */
     .post(controller.createGuest);
 
+
 router
     .route('/guests/upload')
     .post(controller.uploadGuests);
 
 router
     .route('/guests/:id')
-    .get()
+    .get(controller.getGuestById)
     .patch(controller.updateGuest)
-    .delete(controller.removeGuest)
+    .delete(controller.removeGuest);
 
 router
-    .route('/hotels')
+    .route('/companies')
     .get(controller.getAllHotels)
+    .patch(controller.updateHotel)
     .post(controller.createHotel);
 
 router
-    .route('/hotels/upload')
+    .route('/companies/upload')
     .post(controller.uploadHotels);
 
 router
-    .route('/hotels/:id')
+    .route('/companies/:id')
     .get()
-    .patch(controller.updateHotel)
     .delete(controller.removeHotel)
 
 router
-    .route('/messages')
+    .route('/templates')
     /**
      * @api {get} messenger/manage/guests List Message.js Templates
      * @apiDescription Get a list of message/notification templates.
@@ -133,12 +134,12 @@ router
     .post(controller.createMessageTemplate);
 
 router
-    .route('/messages/upload')
+    .route('/templates/upload')
     .post(controller.uploadMessageTemplates);
 
 router
-    .route('/messages/:id')
-    .get()
+    .route('/templates/:id')
+    .get(controller.getTemplateById)
     .patch(controller.updateMessageTemplate)
     .delete(controller.removeMessageTemplate)
 

@@ -5,12 +5,11 @@ const controller = require('../controllers/message.controller');
 const router = express.Router();
 
 router
-    .route('/message/send')
-//    .get(controller.getAllGuests)
+    .route('/send')
     .post(controller.sendMessage);
 
 router
-    .route('/message/template')
+    .route('/template')
     .post(controller.createMessageTemplateFromRequest);
 
 module.exports = router;

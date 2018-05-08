@@ -10,6 +10,8 @@ const routes = require('../routes');
 const { logs } = require('./vars');
 //const strategies = require('./passport');
 const error = require('../middlewares/error');
+const fileUpload = require('express-fileupload');
+
 
 /**
  * Express instance
@@ -36,6 +38,7 @@ app.use(helmet());
 
 // enable CORS - Cross Origin Resource Sharing
 app.use(cors());
+app.use(fileUpload());
 
 // enable authentication
 //app.use(passport.initialize());

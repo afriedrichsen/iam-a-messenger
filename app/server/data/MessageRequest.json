@@ -1,7 +1,6 @@
 {
-  "targetUser": 42069,
-  "targetMessage":123123123,
-  "targetCompany": 4,
-  "createTimstamp": 12315476865744,
-  "sentTimestamp": 12331324134
+
+  "userId":"5af09d5b5405ea77dc2fb974",
+  "messageId":"5af161b657558b1945405a0b",
+  "companyId":"5af1610d57558b1945405a07"
 }
