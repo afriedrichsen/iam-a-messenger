@@ -43,7 +43,7 @@ For testing purposes, the customer "notifications" are simple alert output or JS
    c.)  Run the Web Service and Client
         
         
-        npm run start:dev:full
+        npm run dev:server
         
         cd client
         
@@ -78,7 +78,7 @@ Interfacing with the application can be done at the UI endpoint (``http://localh
 
 
 
-##Future Features
+## Future Features
 
 If I had more time I would need to adjust the following:
 
