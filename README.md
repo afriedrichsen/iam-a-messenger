@@ -23,14 +23,23 @@ The following files/code are of particular interest:
 
 ## Features
 * ExpressJS REST API
+* CORS enabled
+* Request validation with [joi](https://github.com/hapijs/joi)
+* Uses [helmet](https://github.com/helmetjs/helmet) to set some HTTP headers for security
 * "Simple" ReactJS frontend.
+* Linting with [eslint](http://eslint.org)
 * Redux state management.
 * mongoose for ORM and data storage.
 * Docker build
 * Mocha, Chai and Sinon for server testing framework.
 * ES2017 asynchornous web calls (async/await)
 * REST API Documentation with apidoc
-* Travis for CI integration
+* Code coverage with [istanbul](https://istanbul.js.org) and [coveralls](https://coveralls.io)
+* Git hooks with [husky](https://github.com/typicode/husky) 
+* Logging with [morgan](https://github.com/expressjs/morgan)
+* API documentation geratorion with [apidoc](http://apidocjs.com)
+* Continuous integration support with [travisCI](https://travis-ci.org)
+
 
 ## Installation
 1.) Clone the repository.

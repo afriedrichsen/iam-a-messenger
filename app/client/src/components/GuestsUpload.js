@@ -29,7 +29,7 @@ export default class GuestUpload extends React.Component {
 
     render()
     {
-        return (<div>More Butts you can upload...
+        return (<div>Upload users here.
 
             <div>
                 <h2> File upload </h2>
