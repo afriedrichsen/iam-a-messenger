@@ -28,11 +28,13 @@ For testing purposes, the customer "notifications" are simple alert output or JS
    
         cd iam-a-messenger
         
-        cp .env.example
+        cp app/server/.env.example app/server/.env
         
-        nano .env
+        nano app/server/.env
    
    b.) Install packages.
+   
+        cd iam-a-messenger
    
         npm install
         
@@ -41,7 +43,6 @@ For testing purposes, the customer "notifications" are simple alert output or JS
         npm install
    
    c.)  Run the Web Service and Client
-        
         
         npm run dev:server
         
