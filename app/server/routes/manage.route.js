@@ -143,5 +143,8 @@ router
     .patch(controller.updateMessageTemplate)
     .delete(controller.removeMessageTemplate)
 
+router
+    .route('/initialize')
+    .get(controller.loadServerDataFromFiles);
 
 module.exports = router;

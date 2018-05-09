@@ -2,7 +2,7 @@ const httpStatus = require('http-status');
 const { omit } = require('lodash');
 //const User = require('../models/user.model');
 
-
+// Here are our models.
 const Guest = require('../models/guest.model');
 const Hotel = require('../models/hotel.model');
 const Message = require('../models/message.model');
@@ -48,8 +48,8 @@ exports.sendMessage = async (req, res, next) => {
 
                 }
                 messageResult = messageResult.replace('#TARGET_GREETING',targetGreeting).replace('#TARGET_GUEST', targetGuest).replace('#TARGET_RESERVATION_LOCATION',targetGuestRoom).replace('#TARGET_LOCATION', targetCompany);
-                //console.log(messageResult);
-                res.json({success: true, message:'Message output provided.', messageResult});
+                console.log(messageResult);
+                res.json({success: true, message:'Message output provided.', result: messageResult});
             });
         });
     });

@@ -1,5 +1,8 @@
 const httpStatus = require('http-status');
 const { omit } = require('lodash');
+const fs = require('fs');
+const path = require('path');
+
 //const User = require('../models/user.model');
 
 
@@ -332,3 +335,45 @@ exports.removeMessageTemplate = (req, res, next) => {
         .then(() => res.status(httpStatus.NO_CONTENT).end())
         .catch(e => next(e));
 };
+
+/**
+ * Load data from existing files.
+ * @public
+ */
+
+exports.loadServerDataFromFiles = async (req, res, next) => {
+    try {
+
+
+        const dataGuests = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/Guests.json')));
+        const dataCompanies = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/Companies.json')));
+        const dataTemplates = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/Messages.json')));
+
+        //Guest data.
+        for(var i=0; i < dataGuests.length; i++) {
+            const guests = new Guest(dataGuests[i]);
+            const savedGuests = await guests.save();
+        }
+
+        //Company data.
+        for(var i=0; i < dataCompanies.length; i++) {
+            const companies = new Hotel(dataCompanies[i]);
+            const savedCompanies = await companies.save();
+        }
+
+        //Message templates.
+        for(var i=0; i < dataTemplates.length; i++) {
+            const messages = new Message(dataTemplates[i]);
+            const savedMessages = await messages.save();
+        }
+        //res.status(httpStatus.CREATED);
+        res.json({success:true, message:'Initial application data for users, companies and message templates has been loaded.'});
+
+
+    //    const dataGuests = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/Guests.json')));
+     //   console.log(JSON.stringify(dataGuests));
+
+    } catch(error) {
+        next(error);
+    }
+}

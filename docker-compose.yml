@@ -9,3 +9,21 @@ services:
     ports:
       - 27017:27017
     command: mongod --smallfiles --logpath=/dev/null
+  # Here is our back end REST web service.
+  api-service:
+    build:
+      context: ./app/server
+      dockerfile: Dockerfile
+    depends_on:
+      - mongodb
+  # Here is our UI
+  messenger-ui:
+    build:
+      context: ./app/client
+      dockerfile: Dockerfile
+      ports:
+        - 3000:3000
+        - 80:80
+    depends_on:
+      - mongodb
+      - api-service
