@@ -1,6 +1,6 @@
 {
   "name": "react-redux-client",
-  "version": "0.1.0",
+  "version": "1.0.3",
   "private": true,
   "dependencies": {
     "express": "^4.16.3",
