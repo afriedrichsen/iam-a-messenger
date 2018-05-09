@@ -7,6 +7,10 @@ Mock customer notification system built on the MERN stack.
 
 The following application is a mock up of a customer notification system.
 
+For testing purposes, the customer "notifications" are simple alert output or JSON output (if using the REST service).
+
+
+## Design
 
 The application is divided into 3 objects:
 
@@ -14,7 +18,9 @@ The application is divided into 3 objects:
 * Companies (hotels/locations etc.)
 * Message templates
 
-For testing purposes, the customer "notifications" are simple alert output or JSON output (if using the REST service).
+
+Examples of each object (as well as the message "request" that is sent) can be found at ``app/server/data``
+
 
 
 The following files/code are of particular interest:

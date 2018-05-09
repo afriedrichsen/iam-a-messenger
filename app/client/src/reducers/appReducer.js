@@ -104,6 +104,19 @@ const appReducer = (currentState = INITIAL_STATE, action) => {
               error: action.error,
               successMsg: null
           }
+      case 'TOGGLE_OTHER_BOX':
+          return {
+              ...currentState,
+              toggleMessageSelectGuest: currentState.toggleMessageSelectGuest,
+              toggleMessageSelectCompany: currentState.toggleMessageSelectCompany,
+              toggleMessageSelectTemplate: true,
+              guestSelection: currentState.guestSelection,
+              companySelection: currentState.companySelection,
+              templateSelection: action.template,
+              messagePayload: currentState.messagePayload,
+              error: action.error,
+              successMsg: null
+          }
 
 
 

@@ -1,5 +1,5 @@
 {
-  "name": "react-redux-client",
+  "name": "messenger-client",
   "version": "1.0.3",
   "private": true,
   "dependencies": {
