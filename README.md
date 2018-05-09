@@ -5,7 +5,21 @@ Mock customer notification system built on the MERN stack.
 
 The following application is a mock up of a customer notification system.
 
+
+The application is divided into 3 objects:
+
+* Guests
+* Companies (hotels/locations etc.)
+* Message templates
+
 For testing purposes, the customer "notifications" are simple alert output or JSON output (if using the REST service).
+
+
+The following files/code are of particular interest:
+
+* ``app/server/utils/timeGreeting.js`` - JavaScript function that creates a personalized greeting based on the time of day (uses Moment.js).
+
+* ``app/server/controllers/message.controller.js`` - The Express.js controller file that contains the logic for sending the customer notification.
 
 ## Features
 * ExpressJS REST API
