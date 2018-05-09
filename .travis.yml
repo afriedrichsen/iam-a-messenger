@@ -8,15 +8,15 @@ branches:
   only:
     - master
     - /^greenkeeper/.*$/
-    
+
 services: mongodb
 
 env:
   global:
     - NODE_ENV=test
     - PORT=3000
-    - MONGO_URI=http://localhost:27017/iam-a-messenger
-    - MONGO_URI_TESTS=http://localhost:27017/iam-a-messenger
+    - MONGO_URI=mongodb://localhost:27017/iam-a-messenger
+    - MONGO_URI_TESTS=mongodb://localhost:27017/iam-a-messenger
 
 script: yarn validate
 
