@@ -1,5 +1,5 @@
 # IAM Messenger
-[![Build Status](https://travis-ci.org/afriedrichsen/iam-a-messenger.svg?branch=master)](https://travis-ci.org/afriedrichsen/iam-a-messenger)
+Mock customer notification system built on the MERN stack.
 
 ## Overview
 
@@ -31,8 +31,23 @@ For testing purposes, the customer "notifications" are simple alert output or JS
         cp .env.example
         
         nano .env
+   
+   b.) Install packages.
+   
+        npm install
+        
+        cd client
+        
+        npm install
+   
+   c.)  Run the Web Service and Client
+        
         
         npm run start:dev:full
+        
+        cd client
+        
+        npm start
 
 A separate instance of MongoDB will need to be set up (either locally or remote).
   

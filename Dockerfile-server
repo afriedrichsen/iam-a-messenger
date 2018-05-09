@@ -1,0 +1,25 @@
+FROM node:alpine
+
+MAINTAINER Alex Friedrichsen <afriedrichsen@me.com>
+
+ENV NODE_ENV=production
+ENV MONGO_URI=http://mongo/iam-a-messenger
+ENV MONGO_URI_TESTS=mongodb://mongo/iam-a-messenger
+ENV PORT=2112
+ENV DOCKER_FLAG=docker_prod
+
+# Update
+RUN apk add --update nodejs
+
+WORKDIR /app
+
+ADD package.json /app
+ADD app/server /app
+
+# RUN node -v
+
+RUN cd /app; npm install --production
+
+EXPOSE 2112
+
+CMD [ "npm","start"]

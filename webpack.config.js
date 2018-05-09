@@ -11,7 +11,7 @@ const env = getClientEnvironment(publicUrl);
 module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
-    entry: { main: './app/client/index.js' },
+    entry: { main: './app/client/src/index.js' },
     output: {
         path: path.join(__dirname, 'build'),
         filename: '[name].[chunkhash].js'
