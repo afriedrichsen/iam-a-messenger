@@ -8,6 +8,8 @@ branches:
   only:
     - master
     - /^greenkeeper/.*$/
+    
+services: mongodb
 
 env:
   global:
