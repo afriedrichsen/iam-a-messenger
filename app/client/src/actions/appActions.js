@@ -72,6 +72,20 @@ export const sendMessageSuccess = (message) => {
 export const sendMessageFailed = (error) => {
     return {
         type:'SEND_MESSAGE_FAILED',
-        error
+        error,
+    }
+}
+
+export const toggleOtherInputBox = (template) => {
+    return {
+        type:'TOGGLE_OTHER_BOX',
+        template,
+    }
+}
+
+export const untoggleOtherInputBox = (template) => {
+    return {
+        type:'UNTOGGLE_OTHER_BOX',
+        template,
     }
 }

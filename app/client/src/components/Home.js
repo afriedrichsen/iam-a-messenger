@@ -1,9 +1,8 @@
 // ./react-redux-client/src/components/Home.js
 import React from 'react';
 import { Alert,Glyphicon,Button,Modal,DropdownButton,MenuItem,Form,FormGroup,Field,Label,ControlLabel,FormControl } from 'react-bootstrap';
-import { Link } from 'react-router';
-import GuestEditForm from './GuestEditForm';
-//import SendMessageForm from './SendMessageForm';
+import {reduxForm} from 'redux-form';
+
 
 export default class Home extends React.Component {
   constructor(props){
@@ -59,7 +58,14 @@ export default class Home extends React.Component {
       const data = new FormData();
       data.append('userId',messageForm.guestSelect.value);
       data.append('companyId',messageForm.companySelect.value);
-      data.append('messageId',messageForm.templateSelect.value);
+
+      if(messageForm.templateSelect.value=='other') {
+        data.append('otherMessage',messageForm.otherInput.value);
+        //alert('others')
+      }
+      else {
+         data.append('messageId',messageForm.templateSelect.value);
+      }
 
       this.props.mappedMessageSend(data);
 
@@ -87,11 +93,16 @@ export default class Home extends React.Component {
 
   }
 
-  handleTemplateSelection(e, evtKey) {
-        //  alert(e);
-        //  e.preventDefault();
-        this.props.mappedToggleSelectTemplate(e.target.value);
-        //alert(evtKey);
+  handleTemplateSelection(e) {
+
+        if(e.target.value == 'other') {
+           // this.props.mappedToggleSelectTemplate(e.target.value);
+            this.props.mappedToggleOtherInputSelected()
+
+        } else {
+            this.props.mappedToggleSelectTemplate(e.target.value);
+            this.props.unmapToggleOtherInputSelected()
+        }
 
     }
 
@@ -108,6 +119,7 @@ export default class Home extends React.Component {
   }
 
   render(){
+    //const appState = this.props.mappedAppState;
     const guestState = this.props.mappedGuestState;
     const companyState = this.props.mappedCompanyState;
     const templateState = this.props.mappedTemplateState;
@@ -115,6 +127,8 @@ export default class Home extends React.Component {
     const guests = guestState.guests;
     const templates = templateState.templates;
     const editGuest = guestState.guestToEdit;
+
+
     return(
       <div className="col-md-12">
         <div className="row">
@@ -126,6 +140,7 @@ export default class Home extends React.Component {
               <label>
                 Select Guest:
                 <select name="guestSelect" onChange={this.handleGuestSelection}>
+                    <option value="initial">---------------------------</option>
                     {!guests && guestState.isFetching &&
                     <p>Loading guests....</p>
                     }
@@ -145,6 +160,7 @@ export default class Home extends React.Component {
               <label>
                   Select Company:
                   <select name="companySelect" onChange={this.handleCompanySelection}>
+                      <option value="initial">---------------------------</option>
                       {!companies && companyState.isFetching &&
                       <p>Loading companies...</p>
                       }
@@ -163,7 +179,8 @@ export default class Home extends React.Component {
                 <div className="row">
               <label>
                   Select Message Template:
-                  <select name="templateSelect" onChange={this.handleTemplateSelection}>
+                  <select className="selectpicker" name="templateSelect" id="test" onChange={this.handleTemplateSelection}>
+                      <option value="initial">---------------------------</option>
                       {!templates && templateState.isFetching &&
                       <p>Loading guests....</p>
                       }
@@ -172,21 +189,27 @@ export default class Home extends React.Component {
                       }
                       {templates && templates.length > 0 && !templateState.isFetching &&
 
-                      templates.map((template,i) => <option value={template._id} id={i}>{template.messageType}</option>)
+                      templates.map((template,i) => <option ballsohard="motherfuckers" value={template._id} id={i} label={template.messageType}>{template.messageType}</option>)
                       }
 
                       }
-                      <option>Other</option>
+                      <option value="other">Write Custom Message.</option>
                   </select>
+
               </label>
                 </div>
+                {this.props.mappedAppState.showOtherInputBox &&
+                    <div className="row">
+                        <label>
+                            Input your custom message.
+                            <textarea name="otherInput"/>
+                        </label>
+                    </div>
+                }
               <div className="row">
                 <div className="col-md-6">
               <Button type="submit" bsStyle="success" bsSize="large" block>Send</Button>
                 </div>
-                  <div className="col-md-6">
-
-                  </div>
               </div>
             </form>
           </div>

@@ -16,11 +16,11 @@ exports.getGreeting = (m) => {
         var currentHour = parseFloat(m.format("HH"));
 
         if(currentHour >= split_afternoon && currentHour <= split_evening) {
-            g = "Good Afternoon";
+            g = "Good Afternoon!";
         } else if(currentHour >= split_evening) {
-            g = "Good Evening";
+            g = "Good Evening!";
         } else {
-            g = "Good Morning";
+            g = "Good Morning!";
         }
 
         return g;

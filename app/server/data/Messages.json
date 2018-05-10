@@ -2,21 +2,21 @@
   {
     "id": 1,
     "messageType": "greeting",
-    "messageBody": "#TARGET_GREETING, #TARGET_GUEST! Welcome to #TARGET_RESERVATION_LOCATION at #TARGET_LOCATION. We hope you enjoy your stay!"
+    "messageBody": "Welcome to #TARGET_RESERVATION_LOCATION at #TARGET_LOCATION. We hope you enjoy your stay!"
   },
   {
     "id": 2,
     "messageType": "service_request",
-    "messageBody": "#TARGET_GREETING, #TARGET_GUEST! We've received your service request for #TARGET_RESERVATION_LOCATION at #TARGET_LOCATION. Maintenance has been dispatched. Thank you!"
+    "messageBody": "We've received your service request for #TARGET_RESERVATION_LOCATION at #TARGET_LOCATION. Maintenance has been dispatched. Thank you!"
   },
   {
     "id": 3,
     "messageType": "goodbye",
-    "messageBody": "#TARGET_GREETING, #TARGET_GUEST! Thank you for staying with us at #TARGET_LOCATION. We hope you enjoyed your stay!"
+    "messageBody": " Thank you for staying with us at #TARGET_LOCATION. We hope you enjoyed your stay!"
   },
   {
     "id": 4,
     "messageType": "roomservice",
-    "messageBody": "#TARGET_GREETING, #TARGET_GUEST! Your room service request for #TARGET_RESERVATION_LOCATION at #TARGET_LOCATION has been logged."
+    "messageBody": "Your room service request for #TARGET_RESERVATION_LOCATION at #TARGET_LOCATION has been logged."
   }
 ]

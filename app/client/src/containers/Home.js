@@ -30,7 +30,9 @@ const mapDispatchToProps = (dispatch) => {
         mappedToggleSelectGuest: guestSelection => dispatch(appActions.toggleGuestHomeMenu(guestSelection)),
         mappedToggleSelectCompany: companySelection => dispatch(appActions.toggleCompanyHomeMenu(companySelection)),
         mappedToggleSelectTemplate: templateSelection => dispatch(appActions.toggleTemplateHomeMenu(templateSelection)),
-        mappedMessageSend: message => dispatch(appActions.sendMessage(message))
+        mappedMessageSend: message => dispatch(appActions.sendMessage(message)),
+        mappedToggleOtherInputSelected: () => dispatch(appActions.toggleOtherInputBox()),
+        unmapToggleOtherInputSelected: () => dispatch(appActions.untoggleOtherInputBox()),
     }
 }
 

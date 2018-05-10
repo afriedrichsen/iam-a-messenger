@@ -19,7 +19,13 @@ const messageSchema = new mongoose.Schema({
 
     messageBody: {
         type: String,
-        required: true,
+        required: false,
+        trim: true
+    },
+
+    otherMessage: {
+        type: String,
+        required: false,
         trim: true
     }
 },{collection:'messages',

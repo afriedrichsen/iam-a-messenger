@@ -1,7 +1,7 @@
 const httpStatus = require('http-status');
 const { omit } = require('lodash');
 //const User = require('../models/user.model');
-
+const mongoose = require('mongoose');
 // Here are our models.
 const Guest = require('../models/guest.model');
 const Hotel = require('../models/hotel.model');
@@ -13,6 +13,7 @@ const { handler: errorHandler } = require('../middlewares/error');
 const moment = require('moment');
 
 exports.sendMessage = async (req, res, next) => {
+    console.log(req);
 
     try {
     Guest.findById(req.body.userId).then((noguest, guest) => {
@@ -28,16 +29,19 @@ exports.sendMessage = async (req, res, next) => {
         //console.log(result);
 
         //Here we build our custom greeting.
-        var targetGreeting = greeting.getGreeting(moment());
+        var targetGreeting = greeting.getGreeting(moment()) + ', ' + targetGuest;
 
 
         //let's grab the message template we want to send.
-        Message.findById(req.body.messageId).then((nomessage, message) => {
+        Message.findById(req.body.messageId || mongoose.Types.ObjectId()).then((nomessage, message) => {
+            var messageResult;
+
             if (nomessage) {
-                var messageResult = nomessage.messageBody;
+                messageResult = nomessage.messageBody;
+
             }
             else {
-
+                messageResult = req.body.otherMessage;
             }
 
             Hotel.findById(req.body.companyId).then((nocompany, company) => {
@@ -47,7 +51,8 @@ exports.sendMessage = async (req, res, next) => {
                 else {
 
                 }
-                messageResult = messageResult.replace('#TARGET_GREETING',targetGreeting).replace('#TARGET_GUEST', targetGuest).replace('#TARGET_RESERVATION_LOCATION',targetGuestRoom).replace('#TARGET_LOCATION', targetCompany);
+                messageResult = messageResult.replace('#TARGET_RESERVATION_LOCATION',targetGuestRoom).replace('#TARGET_LOCATION', targetCompany);
+                messageResult = targetGreeting + ' ' + messageResult;
                 console.log(messageResult);
                 res.json({success: true, message:'Message output provided.', result: messageResult});
             });

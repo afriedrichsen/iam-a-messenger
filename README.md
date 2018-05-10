@@ -21,7 +21,11 @@ The application is divided into 3 objects:
 
 Examples of each object (as well as the message "request" that is sent) can be found at ``app/server/data``
 
+Additionally, when using the UI, a custom message can be inputted. Similarly, you can use the substitution variables present in the JSON examples in your own custom message to utilize the DB information about the user.
 
+``#TARGET_USER_RESERVATION`` - The user's reservation (room) number.
+
+``#TARGET_LOCATION`` - The selected hotel/location/company.
 
 The following files/code are of particular interest:
 
