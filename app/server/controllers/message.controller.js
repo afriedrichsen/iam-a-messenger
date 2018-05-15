@@ -29,7 +29,7 @@ exports.sendMessage = async (req, res, next) => {
         //console.log(result);
 
         //Here we build our custom greeting.
-        var targetGreeting = greeting.getGreeting(moment()) + ', ' + targetGuest;
+        var targetGreeting = greeting.getGreeting(moment()) + ' ' + targetGuest + "!";
 
 
         //let's grab the message template we want to send.

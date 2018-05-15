@@ -11,9 +11,15 @@ services:
     command: mongod --smallfiles --logpath=/dev/null
   # Here is our back end REST web service.
   api-service:
-    deploy:
-      image: afriedrichsen/messenger-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile-server
     ports:
       - 2112:2112
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/iam-a-messenger
+      - MONGO_URI_TESTS=mongodb://mongodb:27017/iam-a-messenger
+      - NODE_ENV=production
+      - DOCKER_FLAG=docker_production
     depends_on:
       - mongodb

@@ -109,9 +109,9 @@ The Docker service contains the necessary MongoDB container.
 3.) Click "Send" to testing "sending" a message to a selected user and company.
 
 
-
 Interfacing with the application can be done at the UI endpoint (``http://localhost:3000``) or through the REST API (``http://localhost:2112``)
 
+Additional information on available REST endpoints can be found at ``http://localhost:2112/messenger/docs``
 
 
 ## Future Features

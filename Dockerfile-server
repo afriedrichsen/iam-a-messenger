@@ -13,13 +13,17 @@ RUN apk add --update nodejs
 
 WORKDIR /app
 
-ADD package.json /app
-ADD app/server /app
 
-# RUN node -v
+ADD . /app
 
-RUN cd /app; npm install --production
+RUN ls /app
+
+RUN npm install
+
+RUN npm install -g apidoc opn
 
 EXPOSE 2112
 
-CMD [ "npm","start"]
+RUN npm run prestart
+
+CMD [ "node","app/server/index.js"]
