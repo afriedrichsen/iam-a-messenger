@@ -59,6 +59,20 @@ router
 
 router
     .route('/guests/upload')
+    /**
+     * @api {post} messenger/manage/guests/upload Upload Guests
+     * @apiDescription Upload array of guests/users.
+     * @apiVersion 1.0.0
+     * @apiName uploadGuests
+     * @apiGroup Guest
+     *
+     *
+     * @apiParam {Object[]} guests List of guests/users.
+     *
+     *
+     *  @apiSuccess {Object[]} users List of guests.
+     *  @apiSuccess {string} message Server success message.
+     */
     .post(controller.uploadGuests);
 
 router
@@ -69,27 +83,63 @@ router
 
 router
     .route('/companies')
+    /**
+     * @api {get} messenger/manage/companies List Companies
+     * @apiDescription Get a list of companies/locations
+     * @apiVersion 1.0.0
+     * @apiName getAllHotels
+     * @apiGroup Company
+     *
+     *
+     *
+     *
+     * @apiParam  {Number{1-}}         [page=1]     List page
+     * @apiParam  {Number{1-100}}      [perPage=1]  Companies per page
+     *
+     *
+     *
+     *
+     *
+     * @apiSuccess {Object[]} companies List of companies.
+     *
+     *
+     *
+     */
     .get(controller.getAllHotels)
-    .patch(controller.updateHotel)
     .post(controller.createHotel);
 
 router
     .route('/companies/upload')
+    /**
+     * @api {post} messenger/manage/companies/upload Upload Companies
+     * @apiDescription Upload array of companies/locations.
+     * @apiVersion 1.0.0
+     * @apiName uploadHotels
+     * @apiGroup Company
+     *
+     *
+     * @apiParam {Object[]} companies List of companies.
+     *
+     *
+     *  @apiSuccess {Object[]} companies List of companies.
+     *  @apiSuccess {string} message Server success message.
+     */
     .post(controller.uploadHotels);
 
 router
     .route('/companies/:id')
-    .get()
+    .get(controller.getHotelById)
+    .patch(controller.updateHotel)
     .delete(controller.removeHotel)
 
 router
     .route('/templates')
     /**
-     * @api {get} messenger/manage/guests List Message.js Templates
+     * @api {get} messenger/manage/guests List Message Templates
      * @apiDescription Get a list of message/notification templates.
      * @apiVersion 1.0.0
      * @apiName getAllMessageTemplates
-     * @apiGroup Message.js
+     * @apiGroup Message
      *
      *
      *
@@ -108,11 +158,11 @@ router
      */
     .get(controller.getAllMessageTemplates)
     /**
-     * @api {post} messenger/manage/messages Create Messsage Template.
+     * @api {post} messenger/manage/templates Create Messsage Template.
      * @apiDescription Create a new message template
      * @apiVersion 1.0.0
      * @apiName createMessageTemplate
-     * @apiGroup Message.js
+     * @apiGroup Message
      *
      *
      *
@@ -135,6 +185,30 @@ router
 
 router
     .route('/templates/upload')
+    /**
+     * @api {post} messenger/manage/templates/upload Upload Messsage Templates.
+     * @apiDescription Create a new message template
+     * @apiVersion 1.0.0
+     * @apiName createMessageTemplate
+     * @apiGroup Message
+     *
+     *
+     *
+     *
+     * @apiParam  {Object}             messages       Array of Message template objects (JSON).
+     *
+     *
+     *
+     *
+     *
+     *
+     * @apiSuccess (Created 201) {Object}  messageBody     Message.js template's reservation
+     * @apiSuccess (Created 201) {Date}    createdAt       Timestamp
+     *
+     *
+     *
+     *
+     */
     .post(controller.uploadMessageTemplates);
 
 router
@@ -145,6 +219,30 @@ router
 
 router
     .route('/initialize')
+    /**
+     * @api {get} messenger/manage/initialize Initialize Application Data.
+     * @apiDescription Load application with mock data store within application project directory.
+     * @apiVersion 1.0.0
+     * @apiName loadServerDataFromFiles
+     * @apiGroup Admin
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     * @apiSuccess (Created 201) {String}  message      Success message.
+     *
+     *
+     *
+     *
+     *
+     */
     .get(controller.loadServerDataFromFiles);
 
 module.exports = router;
