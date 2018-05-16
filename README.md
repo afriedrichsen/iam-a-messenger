@@ -49,7 +49,7 @@ The following files/code are of particular interest:
 * Code coverage with [istanbul](https://istanbul.js.org) and [coveralls](https://coveralls.io)
 * Git hooks with [husky](https://github.com/typicode/husky) 
 * Logging with [morgan](https://github.com/expressjs/morgan)
-* API documentation geratorion with [apidoc](http://apidocjs.com)
+* API documentation generation with [apidoc](http://apidocjs.com)
 * Continuous integration support with [travisCI](https://travis-ci.org)
 
 
@@ -120,6 +120,7 @@ If I had more time I would need to adjust the following:
 
 * Fix the UI upload screen(s) (Redux state flow is incorrect).
 * Introduce an access and authentication strategy (e.g. Passport.js) to restrict who can log into the UI and who can use the web service
+* Containerize the UI service. This has specific [requirements](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#proxying-api-requests-in-development).
 * Additional UI test cases. 
         
 ## Authors
